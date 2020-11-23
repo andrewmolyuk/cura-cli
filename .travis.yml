@@ -21,6 +21,10 @@ deploy:
   provider: npm
   email: andrew@molyuk.com
   api_key: "$NPM_TOKEN"
+  on:
+    branches:
+      only:
+        - main
 
 env:
   global:
