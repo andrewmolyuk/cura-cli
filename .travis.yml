@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - node
 
+branches:
+  only:
+    - main
+
 script:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
