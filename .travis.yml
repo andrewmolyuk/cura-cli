@@ -11,7 +11,7 @@ script:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
   - export GIT_TAG=v1.0.$TRAVIS_BUILD_NUMBER
-  - npm version $GIT_TAG --force
+  - npm version $GIT_TAG -no-git-tag-version --force
 
 before_deploy:
   - git tag $GIT_TAG -a -m $GIT_TAG
