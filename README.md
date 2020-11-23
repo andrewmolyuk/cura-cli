@@ -35,7 +35,21 @@ cura-cli --help
 
 ### Commands
 
-...
+#### cura version
+
+Return version of Ultimate Cura application.
+
+```sh
+cura-cli cura version
+```
+
+#### cura location
+
+Return location of Ultimate Cura application.
+
+```sh
+cura-cli cura location
+```
 
 ## License
 
