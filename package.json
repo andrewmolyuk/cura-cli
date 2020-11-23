@@ -1,0 +1,30 @@
+{
+  "name": "cura-cli",
+  "version": "1.0.0",
+  "description": "Additional tools to Cura and CuraEngine",
+  "main": "bin/cura-cli",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewmolyuk/cura-cli.git"
+  },
+  "keywords": [
+    "cura",
+    "curaengine"
+  ],
+  "author": "Andrew Molyuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrewmolyuk/cura-cli/issues"
+  },
+  "homepage": "https://github.com/andrewmolyuk/cura-cli#readme",
+  "dependencies": {},
+  "bin": {
+    "cura-cli": "bin/cura-cli"
+  }
+}

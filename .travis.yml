@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - node
+branches:
+  only:
+    - master
+script:
+  - git config --global user.email "builds@travis-ci.com"
+  - git config --global user.name "Travis CI"
+  - export GIT_TAG=1.0.$TRAVIS_BUILD_NUMBER
+  - npm version $GIT_TAG --force
+  - npm run eslint
+before_deploy:
+  - git tag $GIT_TAG -a -m $GIT_TAG
+  - git push https://$GITHUB_TOKEN@github.com/andrewmolyuk/mongo-leader --tags
+deploy:
+  provider: npm
+  email: andrew@molyuk.com
+  api_key: "$NPM_TOKEN"
+env:
+  global:
+    - secure: GJwAZNyatsK5WFBfKGnG2rgn/w7vh8uZuSG0LfH/KPs1QZl8mu8cRdSh8vJlzwSjorSW8VGgtr9Kf7bvEIgAX//DqnakM5Qi1e9181SWqvBnbqd1Ex+LtNGxugAR41JurOsn6/LpcWiTXfPyuRGlwb1hj/1GjY/C9cOlDA55H0oUJhyQGSrLJX8g9DRrProUWEGN8lNnORE0oep9WI8NAkPCRqZRAZIcPCM641WZvvKXNbRuWRe77Tf92enFvVmzR1W0G0fnd1TRpN8Jr6CF3hKeVYHNpQL6ZTiP7allUPKbx4auHrbL4TMXmxbB2M1+ysG3Micmst1umXaebIJ4x48mEouxxbqrjU+aFqOvgLTr7hoylmOifuHKDfe/fwb3IOBwMp4qsZBydRIiR8jkxymPky+J3j4bs4oOYed5vWOYIaM3F64EjKA+VPR4dsrwMGGQfBHyUhQ9fzbP8cd3vfs3j+NG8GUA81H9arEkq2XhKP33ycCo0eiycldFZQzMCKt2HqSGH6xFLn7OI+MXqZ78oqSIGJpRJN501xQOrCWq68IYWeYDa3RRpWVkolbkl8OmbCfCvlvKCYSfZPLOCHlav3bZAKnMJGB5xtDHK1JrBHcXibKhT3Bq/RELSzAilFK/zpixi6/wuhkYufwpkFltGUTwtQ7PfQCl+dCWlI0=
+    - secure: qoHES9JAuNeYmWSFbVH1WhrpSvNVW2miA+aaRnxcQwNJoeMpT486BmSYFoelfM5yGdqpR60EoewJcGxVOLkc+2Mx6DRiMAWUYqRwtJ6gg5armZtw3JwVqtrxHzrvamqOA5CdKAVz0Q9SmfzgQqOATFz1fbZqzI0LTDdLI8YuEWAzDAswotVp6ilx27luK/sR9SAcp5eoiVMsXWAe1tk94zUJRztxs9M80IJ4s409i+yWbmTftkY6/fdpAhhUKDpeO8pEnQp5Oz/ejnd6rnqgV+2ZYAdZlJ42nmvBpQcOUDbnYFxERV9nESswHCUImopfVIWT2v8kT1SEp5Eb533G5ceKJAZiievcof+H0g1IBEGKYf2YNJ50hJkVguVFD5z9mjfatpMKJCViUYtIwZso7MdxU04uEpDaJRWXDkK9nCffpltqsIrcmMGD/cEnEX/TcyNsGY0KwdKyz+kXkHIpCAd4RULlzJYYnWhpTi48fPxiuZ2eFTAaWUSkQs/FuL0xIHZ3SlfCGrdV6WE9qZenpxtDQzM66fSln0g6GHkASR6aNkUkZUOXXobSKaRZKy8t32qOl+eN2DPZTphhYRobLKV8X9sPk3Wm8D+1a/7OFRAYehQ8FTsXJJiQBa9B8GWSfGYVGYfyqlL9oHYvkbn9/noKL8tV3L3zSSlXGXpdusY=
