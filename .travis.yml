@@ -3,10 +3,6 @@ language: node_js
 node_js:
   - node
 
-branches:
-  only:
-    - main
-
 script:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
@@ -21,6 +17,7 @@ deploy:
   provider: npm
   email: andrew@molyuk.com
   api_key: "$NPM_TOKEN"
+  skip_cleanup: true
   on:
     branch: main
 
