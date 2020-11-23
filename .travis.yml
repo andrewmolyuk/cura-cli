@@ -10,8 +10,7 @@ script:
   - npm run eslint
 
 before_deploy:
-  - npm version $GIT_TAG -no-git-tag-version --force
-  - git tag $GIT_TAG -a -m $GIT_TAG
+  - npm version $GIT_TAG --force
   - git push https://$GITHUB_TOKEN@github.com/andrewmolyuk/cura-cli --tags
 
 deploy:
