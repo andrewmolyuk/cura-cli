@@ -23,8 +23,13 @@
     "url": "https://github.com/andrewmolyuk/cura-cli/issues"
   },
   "homepage": "https://github.com/andrewmolyuk/cura-cli#readme",
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^6.2.0"
+  },
   "bin": {
     "cura-cli": "bin/cura-cli"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0"
   }
 }
