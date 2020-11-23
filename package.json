@@ -1,13 +1,12 @@
 {
   "name": "cura-cli",
   "version": "1.0.0",
+  "author": "Andrew Molyuk",
+  "license": "MIT",
   "description": "Additional tools to Cura and CuraEngine",
   "main": "bin/cura-cli",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eslint": "npx eslint src - -ext .js"
   },
   "repository": {
     "type": "git",
@@ -17,14 +16,13 @@
     "cura",
     "curaengine"
   ],
-  "author": "Andrew Molyuk",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/andrewmolyuk/cura-cli/issues"
   },
   "homepage": "https://github.com/andrewmolyuk/cura-cli#readme",
   "dependencies": {
-    "commander": "^6.2.0"
+    "commander": "^6.2.0",
+    "plist": "^3.0.1"
   },
   "bin": {
     "cura-cli": "bin/cura-cli"

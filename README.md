@@ -7,6 +7,16 @@
 [![NPM](https://img.shields.io/npm/v/cura-cli)](http://npm.im/cura-cli)
 [![NPM downloads](https://img.shields.io/npm/dw/cura-cli)](http://npm.im/cura-cli)
 
+Additional tools to Cura and CuraEngine.
+
+==The project is under indie development, any suggestion and contribution greatly appreciated.==
+
+## Requirements
+
+- To use cura-cli you must install Node.js and the npm command line interface using either a Node Version Manager or a Node installer. Download and install apropriate installer from [Node.js website](https://nodejs.org/en/download/) or use [Node Version Manager](https://nodejs.org/en/download/package-manager/#nvm).
+
+- Download and install the latest version of [Ultimaker Cura](https://ultimaker.com/software/ultimaker-cura).
+
 ## Installation
 
 ```sh
@@ -17,7 +27,7 @@ npm -g install cura-cli
 
 After installation the cura-cli tool will be available to you. It is the entrypoint for all the functionality mentioned bellow.
 
-You can see the options available for each command by using the --help flag. The help command is also the best way to see the aliased or shorthand versions of common commands and options.
+You can see the commands and options available by using the --help flag. The help command is also the best way to see the aliased or shorthand versions of common commands and options.
 
 ```sh
 cura-cli --help
