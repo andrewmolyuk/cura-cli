@@ -7,6 +7,10 @@ const rootLocation = () => {
     return '/Applications/Ultimaker Cura.app/Contents/';
 }
 
+const getInfo = () => {
+    return plist.parse(fs.readFileSync(path.join(rootLocation(), 'Info.plist'), 'utf8'));
+}
+
 exports.location = () => {
     switch (os.platform()) {
         case 'darwin':
@@ -17,11 +21,9 @@ exports.location = () => {
 }
 
 exports.version = () => {
-    var info = plist.parse(fs.readFileSync(path.join(rootLocation(), 'Info.plist'), 'utf8'));
-    return info.CFBundleVersion;
+    return getInfo().CFBundleVersion;
 }
 
 exports.shortVersion = () => {
-    var info = plist.parse(fs.readFileSync(path.join(rootLocation(), 'Info.plist'), 'utf8'));
-    return info.CFBundleShortVersionString;
+    return getInfo().CFBundleShortVersionString;
 }
