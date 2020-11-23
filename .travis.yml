@@ -14,7 +14,7 @@ script:
   - npm version $GIT_TAG --force
 
 before_deploy:
-  - git tag $GIT_TAG -a -m $GIT_TAG
+  - git tag $GIT_TAG
   - git push https://$GITHUB_TOKEN@github.com/andrewmolyuk/cura-cli --tags
 
 deploy:
