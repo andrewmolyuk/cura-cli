@@ -1,6 +1,6 @@
 {
   "name": "cura-cli",
-  "version": "1.0.0",
+  "version": "1.0.22",
   "author": "Andrew Molyuk",
   "license": "MIT",
   "description": "Additional tools to Cura and CuraEngine",
