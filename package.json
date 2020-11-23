@@ -6,7 +6,7 @@
   "description": "Additional tools to Cura and CuraEngine",
   "main": "bin/cura-cli",
   "scripts": {
-    "eslint": "npx eslint src - -ext .js"
+    "eslint": "eslint src --ext .js"
   },
   "repository": {
     "type": "git",
