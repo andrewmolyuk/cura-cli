@@ -9,7 +9,7 @@
 
 Additional tools to Cura and CuraEngine.
 
-==The project is under indie development, any suggestion and contribution greatly appreciated.==
+> **The project is under indie development, any suggestion and contribution greatly appreciated.**
 
 ## Requirements
 
