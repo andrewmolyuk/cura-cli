@@ -15,8 +15,8 @@ before_deploy:
   - git config --global user.name "Travis CI"
   - export GIT_TAG=1.0.$TRAVIS_BUILD_NUMBER
   - npm version $GIT_TAG --force
-  - git push https://$GITHUB_TOKEN@github.com/andrewmolyuk/cura-cli
   - git push https://$GITHUB_TOKEN@github.com/andrewmolyuk/cura-cli --tags
+  - git push https://$GITHUB_TOKEN@github.com/andrewmolyuk/cura-cli
 
 deploy:
   provider: npm
