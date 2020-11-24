@@ -15,6 +15,7 @@ before_deploy:
   - git config --global user.name "Travis CI"
   - export GIT_TAG=1.0.$TRAVIS_BUILD_NUMBER
   - npm version $GIT_TAG --force
+  - git push https://$GITHUB_TOKEN@github.com/andrewmolyuk/cura-cli
   - git push https://$GITHUB_TOKEN@github.com/andrewmolyuk/cura-cli --tags
 
 deploy:
@@ -23,7 +24,7 @@ deploy:
   api_key: "$NPM_TOKEN"
   on:
     branch: main
-
+    tags: false
 env:
   global:
     - secure: GJwAZNyatsK5WFBfKGnG2rgn/w7vh8uZuSG0LfH/KPs1QZl8mu8cRdSh8vJlzwSjorSW8VGgtr9Kf7bvEIgAX//DqnakM5Qi1e9181SWqvBnbqd1Ex+LtNGxugAR41JurOsn6/LpcWiTXfPyuRGlwb1hj/1GjY/C9cOlDA55H0oUJhyQGSrLJX8g9DRrProUWEGN8lNnORE0oep9WI8NAkPCRqZRAZIcPCM641WZvvKXNbRuWRe77Tf92enFvVmzR1W0G0fnd1TRpN8Jr6CF3hKeVYHNpQL6ZTiP7allUPKbx4auHrbL4TMXmxbB2M1+ysG3Micmst1umXaebIJ4x48mEouxxbqrjU+aFqOvgLTr7hoylmOifuHKDfe/fwb3IOBwMp4qsZBydRIiR8jkxymPky+J3j4bs4oOYed5vWOYIaM3F64EjKA+VPR4dsrwMGGQfBHyUhQ9fzbP8cd3vfs3j+NG8GUA81H9arEkq2XhKP33ycCo0eiycldFZQzMCKt2HqSGH6xFLn7OI+MXqZ78oqSIGJpRJN501xQOrCWq68IYWeYDa3RRpWVkolbkl8OmbCfCvlvKCYSfZPLOCHlav3bZAKnMJGB5xtDHK1JrBHcXibKhT3Bq/RELSzAilFK/zpixi6/wuhkYufwpkFltGUTwtQ7PfQCl+dCWlI0=
