@@ -5,25 +5,24 @@ const path = require('path');
 const cura = require('../helpers/cura');
 const xml2js = require('xml2js');
 
-const listPrinters = () => {
-    const dir = path.join(cura.resources, 'definitions');
-    fs.readdirSync(dir)
+const readFiles = (folder) => {
+    const dir = path.join(cura.resources, folder);
+    return fs.readdirSync(dir)
         .map(file => path.resolve(dir, file))
         .filter(file => fs.existsSync(file))
-        .map(file => fs.readFileSync(file, 'utf-8'))
+        .map(file => fs.readFileSync(file, 'utf-8'));
+}
+
+const listPrinters = () => {
+    readFiles('definitions')
         .map(content => JSON.parse(content))
-        // .filter(content => content && (content.iherits || (content.metadata && content.metadata.type === 'machine')))
         .filter(content => content !== null && (content.iherits !== null || (content.metadata && content.metadata.type === 'machine')))
         .map(content => console.log(content.name));
 }
 
 const listMaterials = () => {
-    const dir = path.join(cura.resources, 'materials');
     const names = [];
-    fs.readdirSync(dir)
-        .map(file => path.resolve(dir, file))
-        .filter(file => fs.existsSync(file))
-        .map(file => fs.readFileSync(file, 'utf-8'))
+    readFiles('materials')
         .map(content => xml2js.parseString(content, { trim: true }, (err, content) => {
             const name = content.fdmmaterial.metadata[0].name[0];
             if (name.label) {
