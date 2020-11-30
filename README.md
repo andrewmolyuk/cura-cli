@@ -59,6 +59,14 @@ Return list of printers from definitions.
 cura-cli list printers
 ```
 
+#### list materials
+
+Return list of allowed materials.
+
+```sh
+cura-cli list printers
+```
+
 ## License
 
 This project is licensed under the [MIT License](https://github.com/andrewmolyuk/cura-cli/blob/main/LICENSE).
