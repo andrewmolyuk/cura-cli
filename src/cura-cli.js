@@ -12,7 +12,7 @@ program
 program
     .command('list <resource>')
     .description('list a contents of specified resource', {
-        resource: 'definitions | extruders | materials | quality'
+        resource: 'printers | extruders | materials | quality'
     })
     .action(list);
 

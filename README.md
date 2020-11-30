@@ -51,6 +51,14 @@ Return location of Ultimate Cura application.
 cura-cli cura location
 ```
 
+#### list printers
+
+Return list of printers from definitions.
+
+```sh
+cura-cli list printers
+```
+
 ## License
 
 This project is licensed under the [MIT License](https://github.com/andrewmolyuk/cura-cli/blob/main/LICENSE).

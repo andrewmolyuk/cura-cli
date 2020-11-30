@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Andrew Molyuk",
   "license": "MIT",
-  "description": "Additional tools to Cura and CuraEngine",
+  "description": "Additional command line tools for Cura and CuraEngine",
   "main": "bin/cura-cli",
   "scripts": {
     "eslint": "eslint src --ext .js"
