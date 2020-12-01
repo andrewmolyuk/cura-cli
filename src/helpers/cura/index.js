@@ -1,7 +1,6 @@
 'use strict';
 
 const os = require('os');
-
 const cura = require(`./cura-${os.platform()}.js`);
 
 exports.location = cura.location;
