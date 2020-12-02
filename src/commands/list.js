@@ -4,12 +4,13 @@ const fs = require('fs');
 const path = require('path');
 const cura = require('../helpers/cura');
 const xml2js = require('xml2js');
+const ini = require('ini');
 
 const readFiles = (folder) => {
     const dir = path.join(cura.resources, folder);
     return fs.readdirSync(dir)
         .map(file => path.resolve(dir, file))
-        .filter(file => fs.existsSync(file))
+        .filter(file => fs.existsSync(file) && fs.lstatSync(file).isFile())
         .map(file => fs.readFileSync(file, 'utf-8'));
 }
 
@@ -38,6 +39,12 @@ const listMaterials = () => {
     result.map(item => console.log(item));
 }
 
+const listQuality = () => {
+    readFiles('quality')
+        .map(content => ini.parse(content))
+        .map(content => console.log(content.general.name));
+}
+
 module.exports = (resource) => {
     switch (resource) {
         case 'printers':
@@ -47,7 +54,7 @@ module.exports = (resource) => {
             listMaterials();
             break;
         case 'quality':
-            console.log('The feature is not implemented yet');
+            listQuality();
             break;
         default:
             console.log(`error: unknown resource '${resource}'. See 'cura-cli list --help'.`);
