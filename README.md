@@ -64,7 +64,15 @@ cura-cli list printers
 Return list of allowed materials.
 
 ```sh
-cura-cli list printers
+cura-cli list materials
+```
+
+#### list quality
+
+Return list of allowed quality.
+
+```sh
+cura-cli list quality
 ```
 
 ## License
