@@ -26,13 +26,12 @@ const listMaterials = () => {
     readFiles('materials')
         .map(content => xml2js.parseString(content, { trim: true }, (err, content) => {
             const name = content.fdmmaterial.metadata[0].name[0];
-            if (name.label) {
-                names.push(`${name.brand[0]} ${name.material[0]} ${name.label[0]}`);
-            } else if (name.color[0] === 'Generic') {
-                names.push(`${name.brand[0]} ${name.material[0]}`);
-            } else {
-                names.push(`${name.brand[0]} ${name.material[0]} ${name.color[0]}`);
-            }
+            const text = name.label
+                ? `${name.brand[0]} ${name.material[0]} ${name.label[0]}`
+                : (name.color[0] !== 'Generic')
+                    ? `${name.brand[0]} ${name.material[0]} ${name.color[0]}`
+                    : `${name.brand[0]} ${name.material[0]}`;
+            names.push(text);
         }));
 
     const result = names.reduce((acc, curr) => { if (acc.includes(curr)) console.log(curr); return acc.includes(curr) ? acc : [...acc, curr] }, []);
