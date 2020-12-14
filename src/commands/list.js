@@ -5,25 +5,38 @@ const path = require('path');
 const cura = require('../helpers/cura');
 const xml2js = require('xml2js');
 const ini = require('ini');
+const os = require("os");
 
-const readFiles = (folder) => {
-    const dir = path.join(cura.resources, folder);
+const readFiles = (dir) => {
     return fs.readdirSync(dir)
         .map(file => path.resolve(dir, file))
         .filter(file => fs.existsSync(file) && fs.lstatSync(file).isFile())
         .map(file => fs.readFileSync(file, 'utf-8'));
 }
 
+const readCustomFiles = (folder) => {
+    const dir = path.join(os.homedir(), 'Library', 'Application Support', 'cura', cura.shortVersion, folder);
+    return readFiles(dir);
+}
+
+const readCuraFiles = (folder) => {
+    const dir = path.join(cura.resources, folder);
+    return readFiles(dir);
+}
+
 const listPrinters = () => {
-    readFiles('definitions')
+    readCuraFiles('definitions')
         .map(content => JSON.parse(content))
         .filter(content => content !== null && (content.iherits !== null || (content.metadata && content.metadata.type === 'machine')))
         .map(content => console.log(content.name));
+    readCustomFiles('machine_instances')
+        .map(content => ini.parse(content))
+        .map(content => console.log(content.general.name));
 }
 
 const listMaterials = () => {
     const names = [];
-    readFiles('materials')
+    readCuraFiles('materials')
         .map(content => xml2js.parseString(content, { trim: true }, (err, content) => {
             const name = content.fdmmaterial.metadata[0].name[0];
             const text = name.label
@@ -39,7 +52,7 @@ const listMaterials = () => {
 }
 
 const listQuality = () => {
-    readFiles('quality')
+    readCuraFiles('quality')
         .map(content => ini.parse(content))
         .map(content => console.log(content.general.name));
 }
