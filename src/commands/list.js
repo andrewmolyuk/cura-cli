@@ -24,14 +24,18 @@ const readCuraFiles = (folder) => {
     return readFiles(dir);
 }
 
+const readGeneralNames = (files) => {
+    return files.map(content => ini.parse(content))
+        .map(content => console.log(content.general.name));
+}
+
 const listPrinters = () => {
     readCuraFiles('definitions')
         .map(content => JSON.parse(content))
         .filter(content => content !== null && (content.iherits !== null || (content.metadata && content.metadata.type === 'machine')))
         .map(content => console.log(content.name));
-    readCustomFiles('machine_instances')
-        .map(content => ini.parse(content))
-        .map(content => console.log(content.general.name));
+    const files = readCustomFiles('machine_instances');
+    return readGeneralNames(files);
 }
 
 const listMaterials = () => {
@@ -52,9 +56,8 @@ const listMaterials = () => {
 }
 
 const listQuality = () => {
-    readCuraFiles('quality')
-        .map(content => ini.parse(content))
-        .map(content => console.log(content.general.name));
+    const files = readCuraFiles('quality');
+    return readGeneralNames(files);
 }
 
 module.exports = (resource) => {
