@@ -19,16 +19,16 @@ jobs:
       - run: npm install
       - run: npm run lint
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@master
         id: bump-version
+        uses: anothrNick/github-tag-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_BRANCHES: main
           DEFAULT_BUMP: patch
-      - run: |
-          git config --global user.email "andrew@molyuk.com"
-          git config --global user.name "andrewmolyuk"
-          npm version ${{ steps.bump-version.outputs.new_tag }} --force
-      - run: npm publish
+      - name: Publish new version to npm
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          npm version --no-git-tag-version ${{ steps.bump-version.outputs.new_tag }}
+          npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
