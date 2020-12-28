@@ -24,3 +24,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_BRANCHES: main
           DEFAULT_BUMP: patch
+      - uses: JS-DevTools/npm-publish@master
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
