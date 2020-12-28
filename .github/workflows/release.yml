@@ -19,12 +19,14 @@ jobs:
       - run: npm install
       - run: npm run lint
       - name: Bump version and push tag
+        id: bumb-version
         uses: anothrNick/github-tag-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_BRANCHES: main
           DEFAULT_BUMP: patch
-      - run: npm version ${{ outputs.new_tag }} --force
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm version ${{ steps.bump-version.outputs.new_tag }} --force
+      - run: echo ${{ steps.bump-version.outputs.new_tag }}
+      # - run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
