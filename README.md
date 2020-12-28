@@ -1,6 +1,6 @@
 # cura-cli
 
-[![Build Status](https://travis-ci.com/andrewmolyuk/cura-cli.svg?branch=main)](https://travis-ci.com/andrewmolyuk/cura-cli)
+[![Build Status](https://img.shields.io/github/workflow/status/andrewmolyuk/cura-cli/Release%20version)](https://github.com/andrewmolyuk/cura-cli/actions?query=workflow%3A%22Release+version%22)
 [![Dependencies Status](https://badges.depfu.com/badges/6421ee5c228f096514ff4ee2caa6797b/overview.svg)](https://depfu.com/github/andrewmolyuk/cura-cli?project_id=17819)
 [![Codacy Badge](https://img.shields.io/codacy/grade/bfd777cd99f24d76bcfc9be99291f1cb)](https://www.codacy.com/gh/andrewmolyuk/cura-cli/dashboard?utm_source=github.com&utm_medium=referral&utm_content=andrewmolyuk/cura-cli&utm_campaign=Badge_Grade)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/andrewmolyuk/cura-cli)](https://codeclimate.com/github/andrewmolyuk/cura-cli/maintainability)
