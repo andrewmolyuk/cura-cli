@@ -19,8 +19,8 @@ jobs:
       - run: npm install
       - run: npm run lint
       - name: Bump version and push tag
-        id: bumb-version
         uses: anothrNick/github-tag-action@master
+        id: bumb-version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_BRANCHES: main
