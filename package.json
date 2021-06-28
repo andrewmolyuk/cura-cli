@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/andrewmolyuk/cura-cli#readme",
   "dependencies": {
-    "commander": "^7.0.0",
+    "commander": "^8.0.0",
     "ini": "^2.0.0",
     "plist": "^3.0.1",
     "xml2js": "^0.4.23"
